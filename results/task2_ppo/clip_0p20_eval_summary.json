@@ -1,0 +1,11 @@
+{
+  "name": "clip_0p20",
+  "num_eval_prompts": 200,
+  "reward_model_score_mean": 1.5029227447509765,
+  "effective_reward_mean": 1.3929227447509767,
+  "response_length_mean": 312.415,
+  "response_length_std": 260.134778095894,
+  "generation_cap_rate": 0.11,
+  "sampled_kl_token_mean": -1.207837622798724e-05,
+  "entropy_token_mean": 1.0268409543967938
+}

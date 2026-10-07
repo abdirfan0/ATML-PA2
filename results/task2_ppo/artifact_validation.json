@@ -1,0 +1,28 @@
+{
+  "checked_runs": [
+    "standard",
+    "clip_0p05",
+    "clip_0p20",
+    "clip_0p50",
+    "kl_0p00",
+    "kl_0p10",
+    "kl_0p20"
+  ],
+  "evaluation_rows_per_run": 200,
+  "raw_record_summary_recomputation": "passed (absolute tolerance 1e-12)",
+  "evaluation_prompt_ids_messages_and_seeds": "identical across all seven policies",
+  "fork_training_indices": "identical across all six forks",
+  "fork_midpoint_policy_hash": "identical across all six forks",
+  "fork_config_differences": "only intended clip_epsilon or kl_beta",
+  "training_code_hashes_match_uploaded_source": true,
+  "limitations": [
+    "All recorded online clip fractions are zero, including both optimization epochs.",
+    "clip_0p20 and kl_0p10 have identical configs but different adapter hashes and evaluation means; source of run-to-run variation is not yet established.",
+    "FP16 AMP skipped two critic steps per run; no policy steps skipped.",
+    "Sampled raw log-probability difference under tempered/top-p decoding is a diagnostic, not an unbiased estimate of full-policy KL."
+  ],
+  "identical_setting_reward_means": {
+    "clip_0p20": 1.5029227447509765,
+    "kl_0p10": 1.5508100891113281
+  }
+}

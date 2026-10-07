@@ -1,0 +1,14 @@
+{
+  "run_name": "standard",
+  "updates": 20,
+  "clip_epsilon": 0.2,
+  "kl_beta": 0.1,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/standard",
+  "generated_tokens": 4687,
+  "skipped_policy_steps": 0,
+  "skipped_value_steps": 2,
+  "wall_seconds": 231.59519459900002,
+  "peak_vram_gib": 7.694421768188477,
+  "stability_statistic": "fraction of policy optimization steps skipped by AMP",
+  "policy_skip_fraction": 0.0
+}

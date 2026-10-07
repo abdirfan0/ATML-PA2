@@ -1,0 +1,11 @@
+{
+  "name": "kl_0p10",
+  "num_eval_prompts": 200,
+  "reward_model_score_mean": 1.5508100891113281,
+  "effective_reward_mean": 1.470810089111328,
+  "response_length_mean": 303.665,
+  "response_length_std": 252.1766301127049,
+  "generation_cap_rate": 0.08,
+  "sampled_kl_token_mean": 1.1262872147290522e-05,
+  "entropy_token_mean": 1.019468863139159
+}

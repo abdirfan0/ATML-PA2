@@ -216,3 +216,70 @@ https://github.com/AbDu11aHHH/ATML-PA2-LLM-PostTraining
 
 Implementation and debugging used ChatGPT/Codex coding assistance.
 The starter's existing attribution and dependency information are retained.
+
+## Task 2: PPO experiments
+
+Task 2 is implemented in `task2_ppo/`. The standard continuation uses
+20 updates; each clipping or KL fork uses 8 updates from the same supplied
+midpoint. Every policy is evaluated on the same 200 prompts with fixed
+decoding settings and per-prompt seeds.
+
+### Inspect saved results on CPU
+
+```bash
+python -m task2_ppo.validate_objective
+python -m task2_ppo.plot_results
+```
+
+`notebooks/02_PPO.ipynb` displays tables, figures, and selected responses.
+GPU execution flags are disabled by default. The qualitative cell saves
+`results/task2_ppo/qualitative_examples.json`.
+
+### Reproduce GPU experiments
+
+First install `requirements.txt`, download the pinned course assets with
+`python -m scripts.download_assets`, and run `python -m scripts.validate_assets`.
+Use a fresh checkout. On an existing checkout, preserve both the previous
+`results/task2_ppo/` and `outputs/task2_ppo/` directories before starting
+a fresh reproduction. Matching incomplete runs resume automatically;
+runs with mismatched metadata are rejected.
+
+```bash
+python -m task2_ppo.validate_objective
+python -u -m task2_ppo.analyze_clipping --config configs/ppo.yaml --stage cache
+python -u -m task2_ppo.continue_train --config configs/ppo.yaml --run-name standard --output outputs/task2_ppo/standard
+python -u -m task2_ppo.evaluate --config configs/ppo.yaml --adapter outputs/task2_ppo/standard --name standard
+python -u -m task2_ppo.analyze_clipping --config configs/ppo.yaml --stage train
+python -u -m task2_ppo.ablate_kl --config configs/ppo.yaml --stage train
+python -u -m task2_ppo.analyze_clipping --config configs/ppo.yaml --stage evaluate
+python -u -m task2_ppo.ablate_kl --config configs/ppo.yaml --stage evaluate
+python -m task2_ppo.plot_results
+```
+
+### Recorded limitations and conventions
+
+- Online clip fractions were zero in all recorded optimization epochs.
+  Cached-rollout clipping diagnostics are reported separately.
+- `clip_0p20` and `kl_0p10` use identical settings but produced different
+  adapters and mean rewards (1.5029 and 1.5508). The source of this
+  run-to-run variation has not been established; fixed seeds did not
+  provide bitwise reproducibility. Small differences between conditions
+  should not be treated as definitive parameter effects.
+- AMP skipped two critic steps per run: 2/40 for standard PPO and 2/16
+  for each short fork. No policy steps were skipped.
+- Sampled KL uses raw response-token log-probability differences under
+  temperature/top-p decoding. It is a diagnostic, not an unbiased
+  full-policy KL estimate; small negative values are possible.
+- Response lengths include generated EOS tokens and exclude padding.
+  Length standard deviations use the population convention. Evaluation
+  uses a 768-token cap; training uses a 512-token cap.
+- Gradient norms are recorded before gradient clipping. Training wall time
+  excludes initial model loading and held-out evaluation; peak VRAM is
+  PyTorch's peak allocated CUDA memory.
+- Evaluation processes one prompt at a time and may take substantially
+  longer than the short training continuations.
+- Saved metadata records configurations, prompt IDs, indices, and hashes.
+  The uploaded-artifact checks are recorded in
+  `results/task2_ppo/artifact_validation.json`.
+
+The pipeline used coding assistance from ChatGPT/Codex.

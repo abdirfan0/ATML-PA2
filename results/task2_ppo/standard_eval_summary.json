@@ -1,0 +1,11 @@
+{
+  "name": "standard",
+  "num_eval_prompts": 200,
+  "reward_model_score_mean": 1.4601336669921876,
+  "effective_reward_mean": 1.3301336669921875,
+  "response_length_mean": 317.865,
+  "response_length_std": 265.9265815502467,
+  "generation_cap_rate": 0.13,
+  "sampled_kl_token_mean": 5.450883358774077e-06,
+  "entropy_token_mean": 1.020306828557904
+}

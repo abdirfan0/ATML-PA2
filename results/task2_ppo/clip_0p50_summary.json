@@ -1,0 +1,14 @@
+{
+  "run_name": "clip_0p50",
+  "updates": 8,
+  "clip_epsilon": 0.5,
+  "kl_beta": 0.1,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/clip_0p50",
+  "generated_tokens": 889,
+  "skipped_policy_steps": 0,
+  "skipped_value_steps": 2,
+  "wall_seconds": 46.798147504999974,
+  "peak_vram_gib": 7.50475549697876,
+  "stability_statistic": "fraction of policy optimization steps skipped by AMP",
+  "policy_skip_fraction": 0.0
+}

@@ -28,3 +28,5 @@ data/*
 # Misc
 *.zip
 .DS_Store
+results/task2_ppo/*_state.pt
+results/task2_ppo/*_state.tmp

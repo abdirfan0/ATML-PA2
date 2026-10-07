@@ -1,20 +1,23 @@
 from __future__ import annotations
-
 import argparse
+import subprocess
+import sys
 from common.data import load_yaml
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--config", default="configs/ppo.yaml")
-    args = ap.parse_args()
-    cfg = load_yaml(args.config)
-    print("KL beta conditions:", cfg["kl_values"])
-    print("Fork update budget:", cfg["fork_updates"])
-    raise NotImplementedError(
-        "TODO(student): run matched short PPO continuations from the exact same midpoint for each KL beta, then implement the requested reward/drift/entropy/length analysis."
-    )
+    p=argparse.ArgumentParser();p.add_argument('--config',default='configs/ppo.yaml')
+    p.add_argument('--stage',choices=['train','evaluate','all'],default='all')
+    a=p.parse_args();cfg=load_yaml(a.config)
+    for beta in cfg['kl_values']:
+        name=f'kl_{float(beta):.2f}'.replace('.','p')
+        out=f'outputs/task2_ppo/{name}'
+        if a.stage in ['train','all']:
+            subprocess.run([sys.executable,'-u','-m','task2_ppo.continue_train',
+                '--config',a.config,'--run-name',name,'--output',out,
+                '--updates',str(cfg['fork_updates']),'--kl-beta',str(beta)],check=True)
+        if a.stage in ['evaluate','all']:
+            subprocess.run([sys.executable,'-u','-m','task2_ppo.evaluate',
+                '--config',a.config,'--adapter',out,'--name',name],check=True)
 
-
-if __name__ == "__main__":
-    main()
+if __name__=='__main__':main()
