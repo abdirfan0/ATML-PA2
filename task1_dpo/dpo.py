@@ -11,40 +11,17 @@ def dpo_loss(
     ref_rejected_logp: torch.Tensor,
     beta: float,
 ):
-    """Return scalar DPO loss plus lightweight diagnostics.
+    policy_margin = policy_chosen_logp - policy_rejected_logp
+    ref_margin = ref_chosen_logp - ref_rejected_logp
 
-    Validate this implementation against the equation in the assignment manual
-    before using it.
-    """
-
-    policy_margin = (
-        policy_chosen_logp
-        - policy_rejected_logp
-    )
-
-    ref_margin = (
-        ref_chosen_logp
-        - ref_rejected_logp
-    )
-
-    # Starter implementation:
-    # students must validate the objective carefully.
-    logits = beta * (
-        policy_margin + ref_margin
-    )
-
-    loss = -F.logsigmoid(
-        logits
-    ).mean()
+    preference_margin = policy_margin - ref_margin
+    logits = beta * preference_margin
+    loss = -F.logsigmoid(logits).mean()
 
     return loss, {
-        "logit_mean":
-            logits.detach().mean(),
-
-        "policy_margin_mean":
-            policy_margin.detach().mean(),
-
+        "logit_mean": logits.detach().mean(),
+        "policy_margin_mean": policy_margin.detach().mean(),
         "preference_accuracy": (
-            (policy_margin - ref_margin) > 0
+            preference_margin > 0
         ).float().mean().detach(),
     }

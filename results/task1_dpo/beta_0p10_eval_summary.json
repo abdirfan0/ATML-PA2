@@ -1,0 +1,12 @@
+{
+  "name": "beta_0p10",
+  "beta": 0.1,
+  "num_eval_pairs": 290,
+  "heldout_dpo_loss": 0.6879151521057918,
+  "heldout_preference_accuracy": 0.5793103448275863,
+  "sampled_kl_token_mean": -0.00023909074145242234,
+  "reward_model_score_mean": 1.3170234943258352,
+  "response_length_mean": 155.0103448275862,
+  "response_length_std": 105.10981070660172,
+  "generation_cap_rate": 0.4482758620689655
+}

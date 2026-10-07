@@ -1,0 +1,11 @@
+{
+  "run_name": "length_balanced",
+  "num_examples": 1442,
+  "epochs": 1,
+  "optimizer_updates": 89,
+  "skipped_updates": 2,
+  "mean_training_loss": 0.6837426840680317,
+  "wall_seconds": 487.03563189799996,
+  "peak_vram_gib": 4.93812370300293,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/length_balanced"
+}

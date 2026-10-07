@@ -1,0 +1,11 @@
+{
+  "run_name": "standard",
+  "num_examples": 1446,
+  "epochs": 1,
+  "optimizer_updates": 90,
+  "skipped_updates": 1,
+  "mean_training_loss": 0.685370310790641,
+  "wall_seconds": 1408.1577183589998,
+  "peak_vram_gib": 4.937551498413086,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/standard"
+}

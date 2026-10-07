@@ -1,0 +1,5 @@
+{
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "torch_version": "2.11.0+cu130",
+  "beta_0p03_generations_completed_on_T4": 121
+}

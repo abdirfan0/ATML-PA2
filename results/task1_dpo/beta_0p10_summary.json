@@ -1,0 +1,11 @@
+{
+  "run_name": "beta_0p10",
+  "num_examples": 600,
+  "epochs": 1,
+  "optimizer_updates": 38,
+  "skipped_updates": 0,
+  "mean_training_loss": 0.6904282989104589,
+  "wall_seconds": 577.1269154299998,
+  "peak_vram_gib": 4.939661026000977,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/beta_0p10"
+}

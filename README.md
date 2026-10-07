@@ -139,3 +139,80 @@ python -m task5_feedback.compare_feedback --config configs/feedback.yaml
 - Record peak VRAM and wall-clock time for the standard PPO and GRPO continuations.
 
 See the assignment manual for the required experiments, metrics, and report questions.
+
+## Task 1: DPO experiments
+
+Implemented experiments:
+- Standard DPO: one epoch on 1,446 eligible preference pairs.
+- Beta study: 0.03, 0.10, and 0.30, each on the same 600 eligible pairs.
+- Length study: training on 1,442 eligible length-control pairs,
+  followed by length-stratified and word-limit evaluation.
+
+### Setup
+
+```bash
+git clone https://github.com/abdirfan0/ATML-PA2.git
+cd ATML-PA2
+python -m pip install -r requirements.txt
+python -m scripts.download_assets
+python -m scripts.validate_assets
+```
+
+### Inspect saved evidence on CPU
+
+Results and logs are in results/task1_dpo/.
+The clean notebook is notebooks/01_DPO.ipynb.
+Its Drive/path cell must be adapted to your local checkout or Colab location.
+
+```bash
+python -m task1_dpo.plot_results
+```
+
+Figures are saved as PNG and PDF in report/figures/.
+
+### Reproduce experiments on a CUDA GPU
+
+For a fresh clone, first preserve the published results because training
+rejects existing run logs. Existing trained outputs must also be moved
+aside if reproducing in a previously used checkout.
+
+```bash
+mv results/task1_dpo results/task1_dpo_published
+
+python -m task1_dpo.train --config configs/dpo.yaml --run-name standard --output outputs/task1_dpo/standard
+python -m task1_dpo.evaluate --config configs/dpo.yaml --adapter outputs/task1_dpo/standard --name standard
+
+python -m task1_dpo.ablate_beta --config configs/dpo.yaml --stage train
+python -m task1_dpo.ablate_beta --config configs/dpo.yaml --stage evaluate
+
+python -m task1_dpo.analyze_length --config configs/dpo.yaml --stage all
+python -m task1_dpo.plot_results
+```
+
+Completed evaluation records are reused only when settings and adapter
+signatures match. Exact outputs can vary across GPU hardware.
+
+### Evidence and conventions
+
+Run metadata records hyperparameters, original row indices, filtering,
+dataset hashes, code hashes, and training hardware. Standard and beta
+forks use different training budgets. AMP-skipped updates are recorded.
+
+Response length includes generated EOS tokens and excludes padding.
+Length dispersion is reported using population standard deviation.
+Sampled KL is the raw response-token log-probability difference from the
+frozen reference, aggregated with response-token weighting. With
+temperature/top-p sampling, it is a diagnostic rather than an unbiased
+estimate of full-policy KL.
+
+Qualitative examples displayed in the notebook:
+- Evaluation row 41: standard versus beta 0.03.
+- Word-limit prompt 5: standard versus length-balanced.
+
+### Attribution
+
+Based on the course starter code:
+https://github.com/AbDu11aHHH/ATML-PA2-LLM-PostTraining
+
+Implementation and debugging used ChatGPT/Codex coding assistance.
+The starter's existing attribution and dependency information are retained.
