@@ -1,0 +1,14 @@
+{
+  "run_name": "standard",
+  "loss_type": "grpo",
+  "updates": 20,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/standard",
+  "generated_tokens": 16674,
+  "maximum_generated_token_allowance": 40960,
+  "active_loss_tokens": 8994,
+  "no_active_token_updates": 2,
+  "skipped_policy_steps": 0,
+  "policy_skip_fraction": 0.0,
+  "wall_seconds": 464.46892991699997,
+  "peak_vram_gib": 6.958501815795898
+}

@@ -1,0 +1,10 @@
+{
+  "name": "canonical",
+  "num_eval_prompts": 200,
+  "reward_model_score_mean": 1.5920581817626953,
+  "response_length_mean": 308.775,
+  "response_length_std": 252.16713579489297,
+  "generation_cap_rate": 0.07,
+  "sampled_kl_token_mean": 1.4591523078180896e-05,
+  "entropy_token_mean": 1.0219145587222527
+}

@@ -1,0 +1,3 @@
+name,num_eval_prompts,reward_model_score_mean,response_length_mean,response_length_std,generation_cap_rate,sampled_kl_token_mean,entropy_token_mean,protocol,updates,generated_token_budget,consumed_rollout_tokens,active_loss_tokens,wall_seconds,peak_vram_gib,skipped_steps
+matched_canonical,200,1.4901558685302734,310.99,258.6227946256865,0.105,3.086490775940844e-05,1.007429933747852,fixed_rollout,8,3211,3211,2699,7.98972210200003,5.036577224731445,0
+matched_dr_grpo,200,1.4446121597290038,319.305,264.82741922807014,0.13,2.1914717786491883e-05,1.023976517238305,fixed_rollout,8,3211,3211,2699,7.830792564000035,5.036441802978516,0

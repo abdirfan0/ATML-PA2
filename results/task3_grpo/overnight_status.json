@@ -1,0 +1,14 @@
+{
+  "state": "completed",
+  "completed_commands": 5,
+  "current_command": [
+    "/usr/bin/python3",
+    "-u",
+    "-m",
+    "task3_grpo.compare_normalization",
+    "--config",
+    "configs/grpo.yaml",
+    "--stage",
+    "summarize"
+  ]
+}

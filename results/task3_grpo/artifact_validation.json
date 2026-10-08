@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "runs": {
+    "standard": {
+      "updates": 20,
+      "eval_rows": 200,
+      "generated_tokens": 16674,
+      "active_loss_tokens": 8994,
+      "no_active_token_updates": 2,
+      "skipped_policy_steps": 0,
+      "maximum_online_clip_fraction": 0.0
+    },
+    "canonical": {
+      "updates": 8,
+      "eval_rows": 200,
+      "generated_tokens": 3314,
+      "active_loss_tokens": 2802,
+      "no_active_token_updates": 0,
+      "skipped_policy_steps": 0,
+      "maximum_online_clip_fraction": 0.0
+    },
+    "dr_grpo": {
+      "updates": 8,
+      "eval_rows": 200,
+      "generated_tokens": 3073,
+      "active_loss_tokens": 2561,
+      "no_active_token_updates": 0,
+      "skipped_policy_steps": 0,
+      "maximum_online_clip_fraction": 0.0
+    }
+  },
+  "checks": [
+    "training source hashes",
+    "within-prompt advantages",
+    "truncation masks",
+    "normalization derivatives",
+    "row-level summary recomputation",
+    "matched fork settings and prompts",
+    "matched evaluation settings and IDs",
+    "canonical reproduces standard first eight updates"
+  ],
+  "limitations": [
+    "Actual generated-token counts differ; the forks share a maximum allowance, not exact token matching.",
+    "Raw sampled log-probability differences under tempered/top-p decoding are diagnostics, not unbiased full-policy KL.",
+    "Selected-token log-probability derivatives are not model-parameter gradient norms."
+  ],
+  "fixed_rollout_normalization": {
+    "source": "Canonical active completions: identical lengths and advantages under both formulas",
+    "length_bins": {
+      "short_le128": {
+        "num_completions": 23,
+        "canonical": {
+          "mean_token_weight": 0.03447885678275847,
+          "mean_abs_token_derivative": 0.016587963923355688,
+          "mean_derivative_l1": 0.17859914574934088
+        },
+        "dr_grpo": {
+          "mean_token_weight": 0.00048828125,
+          "mean_abs_token_derivative": 0.0003488264565416814,
+          "mean_derivative_l1": 0.011739581316562733
+        }
+      },
+      "long_gt128": {
+        "num_completions": 8,
+        "canonical": {
+          "mean_token_weight": 0.0011469787501926193,
+          "mean_abs_token_derivative": 0.0012332725960118934,
+          "mean_derivative_l1": 0.25743268430233
+        },
+        "dr_grpo": {
+          "mean_token_weight": 0.00048828125,
+          "mean_abs_token_derivative": 0.0005027982115279883,
+          "mean_derivative_l1": 0.13184255686428514
+        }
+      }
+    }
+  }
+}

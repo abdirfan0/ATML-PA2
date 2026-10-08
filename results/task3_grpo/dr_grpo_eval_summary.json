@@ -1,0 +1,10 @@
+{
+  "name": "dr_grpo",
+  "num_eval_prompts": 200,
+  "reward_model_score_mean": 1.531195831298828,
+  "response_length_mean": 311.42,
+  "response_length_std": 253.89021958318915,
+  "generation_cap_rate": 0.095,
+  "sampled_kl_token_mean": 3.213722870084307e-05,
+  "entropy_token_mean": 1.027459836136051
+}

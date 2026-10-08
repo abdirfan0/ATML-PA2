@@ -1,0 +1,14 @@
+{
+  "run_name": "dr_grpo",
+  "loss_type": "dr_grpo",
+  "updates": 8,
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/dr_grpo",
+  "generated_tokens": 3073,
+  "maximum_generated_token_allowance": 16384,
+  "active_loss_tokens": 2561,
+  "no_active_token_updates": 0,
+  "skipped_policy_steps": 0,
+  "policy_skip_fraction": 0.0,
+  "wall_seconds": 105.27627433899988,
+  "peak_vram_gib": 6.704795837402344
+}

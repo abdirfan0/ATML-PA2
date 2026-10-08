@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "protocol": "Fixed-rollout normalization intervention; same frozen-midpoint completions and behavior log probabilities. Later batches are not sampled from updated forks.",
+  "exact_generated_token_budget_per_condition": 3211,
+  "exact_active_loss_tokens_per_condition": 2699,
+  "shared_rollouts_sha256": "51d0170d40e1fe4bc2a914ca3f6858270d9bba2a8a1222cfda5b56d370921592",
+  "collection_cost_accounting": "Generated once, consumed unchanged by each condition. Do not count generation cost twice.",
+  "all_evaluations_present": true,
+  "conditions": {
+    "matched_canonical": {
+      "training": {
+        "run_name": "matched_canonical",
+        "protocol": "Fixed-rollout controlled fork, frozen-midpoint behavior likelihoods, no independent online resampling",
+        "updates": 8,
+        "loss_type": "grpo",
+        "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/matched_canonical",
+        "shared_rollouts_sha256": "51d0170d40e1fe4bc2a914ca3f6858270d9bba2a8a1222cfda5b56d370921592",
+        "generated_token_budget": 3211,
+        "consumed_rollout_tokens": 3211,
+        "active_loss_tokens": 2699,
+        "new_tokens_generated_in_fork": 0,
+        "skipped_steps": 0,
+        "wall_seconds": 7.98972210200003,
+        "peak_vram_gib": 5.036577224731445
+      },
+      "length_conditioned_actual_ratio_statistics": {
+        "short_le128": {
+          "num_completions": 24,
+          "token_weight": 0.03280373371236143,
+          "mean_abs_policy_logp_derivative": 0.015469457081053406,
+          "policy_logp_derivative_l1": 0.17471552298714718
+        },
+        "long_gt128": {
+          "num_completions": 7,
+          "token_weight": 0.0011133257550644314,
+          "mean_abs_policy_logp_derivative": 0.0011596177708789973,
+          "policy_logp_derivative_l1": 0.2622687103492873
+        }
+      },
+      "evaluation": {
+        "name": "matched_canonical",
+        "num_eval_prompts": 200,
+        "reward_model_score_mean": 1.4901558685302734,
+        "response_length_mean": 310.99,
+        "response_length_std": 258.6227946256865,
+        "generation_cap_rate": 0.105,
+        "sampled_kl_token_mean": 3.086490775940844e-05,
+        "entropy_token_mean": 1.007429933747852
+      }
+    },
+    "matched_dr_grpo": {
+      "training": {
+        "run_name": "matched_dr_grpo",
+        "protocol": "Fixed-rollout controlled fork, frozen-midpoint behavior likelihoods, no independent online resampling",
+        "updates": 8,
+        "loss_type": "dr_grpo",
+        "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/matched_dr_grpo",
+        "shared_rollouts_sha256": "51d0170d40e1fe4bc2a914ca3f6858270d9bba2a8a1222cfda5b56d370921592",
+        "generated_token_budget": 3211,
+        "consumed_rollout_tokens": 3211,
+        "active_loss_tokens": 2699,
+        "new_tokens_generated_in_fork": 0,
+        "skipped_steps": 0,
+        "wall_seconds": 7.830792564000035,
+        "peak_vram_gib": 5.036441802978516
+      },
+      "length_conditioned_actual_ratio_statistics": {
+        "short_le128": {
+          "num_completions": 24,
+          "token_weight": 0.00048828125,
+          "mean_abs_policy_logp_derivative": 0.00034146630756974144,
+          "policy_logp_derivative_l1": 0.012056285047340983
+        },
+        "long_gt128": {
+          "num_completions": 7,
+          "token_weight": 0.00048828125,
+          "mean_abs_policy_logp_derivative": 0.0005122636097699537,
+          "policy_logp_derivative_l1": 0.14302858470806054
+        }
+      },
+      "evaluation": {
+        "name": "matched_dr_grpo",
+        "num_eval_prompts": 200,
+        "reward_model_score_mean": 1.4446121597290038,
+        "response_length_mean": 319.305,
+        "response_length_std": 264.82741922807014,
+        "generation_cap_rate": 0.13,
+        "sampled_kl_token_mean": 2.1914717786491883e-05,
+        "entropy_token_mean": 1.023976517238305
+      }
+    }
+  }
+}

@@ -30,3 +30,5 @@ data/*
 .DS_Store
 results/task2_ppo/*_state.pt
 results/task2_ppo/*_state.tmp
+results/task3_grpo/*_state.pt
+results/task3_grpo/*.tmp

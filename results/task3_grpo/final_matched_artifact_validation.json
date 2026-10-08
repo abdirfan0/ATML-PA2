@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": {
+    "matched_canonical": {
+      "all_eval_metrics_recomputed": true,
+      "source_hashes_match": true,
+      "eval_rows": 200
+    },
+    "matched_dr_grpo": {
+      "all_eval_metrics_recomputed": true,
+      "source_hashes_match": true,
+      "eval_rows": 200
+    }
+  },
+  "matched_full_prompt_messages": true,
+  "protocol": "Exact-token fixed-rollout comparison; retain original online forks as separate experiments."
+}

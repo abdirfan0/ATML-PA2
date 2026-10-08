@@ -1,0 +1,8 @@
+{
+  "model_loading_seconds": 7.591501374000018,
+  "generation_seconds": 2529.951186764,
+  "policy_reference_scoring_seconds": 33.5563425940054,
+  "reward_scoring_seconds": 14.023066340003425,
+  "generated_tokens": 63861,
+  "generation_tokens_per_second": 25.241988989393537
+}

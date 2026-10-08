@@ -1,0 +1,95 @@
+{
+  "controlled_maximum_token_allowance": 16384,
+  "token_budget_convention": "Same updates, prompts, K and generation cap; report actual EOS-dependent token counts separately.",
+  "length_statistic": "Derivative of the policy surrogate with respect to selected-token log probability at ratio=1, excluding KL; mean absolute token derivative and total L1 mass. This is not a model-parameter gradient norm.",
+  "conditions": {
+    "canonical": {
+      "training": {
+        "run_name": "canonical",
+        "loss_type": "grpo",
+        "updates": 8,
+        "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/canonical",
+        "generated_tokens": 3314,
+        "maximum_generated_token_allowance": 16384,
+        "active_loss_tokens": 2802,
+        "no_active_token_updates": 0,
+        "skipped_policy_steps": 0,
+        "policy_skip_fraction": 0.0,
+        "wall_seconds": 108.9888166589999,
+        "peak_vram_gib": 6.704795837402344
+      },
+      "evaluation": {
+        "name": "canonical",
+        "num_eval_prompts": 200,
+        "reward_model_score_mean": 1.5920581817626953,
+        "response_length_mean": 308.775,
+        "response_length_std": 252.16713579489297,
+        "generation_cap_rate": 0.07,
+        "sampled_kl_token_mean": 1.4591523078180896e-05,
+        "entropy_token_mean": 1.0219145587222527
+      },
+      "length_bins": {
+        "short_le128": {
+          "num_active_completions": 23,
+          "response_length": 26.782608695652176,
+          "relative_advantage": -0.16947519260904062,
+          "normalization_token_weight": 0.03447885678275847,
+          "policy_logp_gradient_mean_abs_at_ratio1": 0.016587963923355688,
+          "policy_logp_gradient_l1_at_ratio1": 0.17859914574934088
+        },
+        "long_gt128": {
+          "num_active_completions": 8,
+          "response_length": 273.25,
+          "relative_advantage": 0.5954716056585312,
+          "normalization_token_weight": 0.0011469787501926193,
+          "policy_logp_gradient_mean_abs_at_ratio1": 0.0012332725960118934,
+          "policy_logp_gradient_l1_at_ratio1": 0.25743268430233
+        }
+      }
+    },
+    "dr_grpo": {
+      "training": {
+        "run_name": "dr_grpo",
+        "loss_type": "dr_grpo",
+        "updates": 8,
+        "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/dr_grpo",
+        "generated_tokens": 3073,
+        "maximum_generated_token_allowance": 16384,
+        "active_loss_tokens": 2561,
+        "no_active_token_updates": 0,
+        "skipped_policy_steps": 0,
+        "policy_skip_fraction": 0.0,
+        "wall_seconds": 105.27627433899988,
+        "peak_vram_gib": 6.704795837402344
+      },
+      "evaluation": {
+        "name": "dr_grpo",
+        "num_eval_prompts": 200,
+        "reward_model_score_mean": 1.531195831298828,
+        "response_length_mean": 311.42,
+        "response_length_std": 253.89021958318915,
+        "generation_cap_rate": 0.095,
+        "sampled_kl_token_mean": 3.213722870084307e-05,
+        "entropy_token_mean": 1.027459836136051
+      },
+      "length_bins": {
+        "short_le128": {
+          "num_active_completions": 25,
+          "response_length": 28.24,
+          "relative_advantage": 0.012622973024845123,
+          "normalization_token_weight": 0.00048828125,
+          "policy_logp_gradient_mean_abs_at_ratio1": 0.0003380718869448174,
+          "policy_logp_gradient_l1_at_ratio1": 0.010746811728604371
+        },
+        "long_gt128": {
+          "num_active_completions": 6,
+          "response_length": 309.1666666666667,
+          "relative_advantage": 0.09171148637930553,
+          "normalization_token_weight": 0.00048828125,
+          "policy_logp_gradient_mean_abs_at_ratio1": 0.000498166193816966,
+          "policy_logp_gradient_l1_at_ratio1": 0.1511126770686436
+        }
+      }
+    }
+  }
+}

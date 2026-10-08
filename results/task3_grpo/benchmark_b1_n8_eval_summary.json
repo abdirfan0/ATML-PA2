@@ -1,0 +1,10 @@
+{
+  "name": "benchmark_b1_n8",
+  "num_eval_prompts": 8,
+  "reward_model_score_mean": 1.9023895263671875,
+  "response_length_mean": 382.875,
+  "response_length_std": 290.58537364258376,
+  "generation_cap_rate": 0.25,
+  "sampled_kl_token_mean": 4.056944803598964e-05,
+  "entropy_token_mean": 0.8606325532150082
+}

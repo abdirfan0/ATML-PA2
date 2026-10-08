@@ -1,0 +1,22 @@
+{
+  "conditions": {
+    "1": {
+      "model_loading_seconds": 7.925915178999958,
+      "generation_seconds": 238.37073815399992,
+      "policy_reference_scoring_seconds": 1.3220460880000928,
+      "reward_scoring_seconds": 1.8808804249999866,
+      "generated_tokens": 3063,
+      "generation_tokens_per_second": 12.849731572426236
+    },
+    "4": {
+      "model_loading_seconds": 6.02507989500009,
+      "generation_seconds": 129.56923487899996,
+      "policy_reference_scoring_seconds": 1.3570250129999977,
+      "reward_scoring_seconds": 0.6592547979998926,
+      "generated_tokens": 3588,
+      "generation_tokens_per_second": 27.691758798689396
+    }
+  },
+  "generation_tokens_per_second_ratio_b4_over_b1": 2.1550457021306277,
+  "scope": "Throughput benchmark only. Batched sampling changes the random-number layout, so generated responses and token counts may differ. All final policy comparisons must use the same batch size."
+}

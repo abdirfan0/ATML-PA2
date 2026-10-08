@@ -1,0 +1,15 @@
+{
+  "run_name": "matched_canonical",
+  "protocol": "Fixed-rollout controlled fork, frozen-midpoint behavior likelihoods, no independent online resampling",
+  "updates": 8,
+  "loss_type": "grpo",
+  "adapter_path": "/content/drive/MyDrive/ATML/PA2/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/matched_canonical",
+  "shared_rollouts_sha256": "51d0170d40e1fe4bc2a914ca3f6858270d9bba2a8a1222cfda5b56d370921592",
+  "generated_token_budget": 3211,
+  "consumed_rollout_tokens": 3211,
+  "active_loss_tokens": 2699,
+  "new_tokens_generated_in_fork": 0,
+  "skipped_steps": 0,
+  "wall_seconds": 7.98972210200003,
+  "peak_vram_gib": 5.036577224731445
+}

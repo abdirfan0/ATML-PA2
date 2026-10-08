@@ -1,0 +1,9 @@
+{
+  "updates": 8,
+  "num_completions": 32,
+  "generated_tokens_once": 3211,
+  "generated_token_budget_per_condition": 3211,
+  "rollouts_sha256": "51d0170d40e1fe4bc2a914ca3f6858270d9bba2a8a1222cfda5b56d370921592",
+  "collection_seconds_this_session": 99.04259351399998,
+  "accounting": "Completions generated once and reused by both forks. Each fork consumes the exact same tokenized rollout pool; do not count collection cost twice."
+}
