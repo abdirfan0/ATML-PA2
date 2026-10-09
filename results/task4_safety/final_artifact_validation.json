@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "num_prompts": 450,
+  "num_responses": 1800,
+  "num_audited_prompt_ids": 60,
+  "num_audited_responses": 240,
+  "overall_agreement": 0.6958333333333333,
+  "num_disagreements": 73,
+  "checks": [
+    "recorded configuration, source hashes and dataset hash",
+    "ordered prompt IDs and response-to-judge hashes",
+    "class-specific denominators",
+    "category distributions",
+    "released fixed balanced audit selection",
+    "audit text, IDs, labels and exact-duplicate consistency",
+    "agreement, confusion counts and disagreement rows"
+  ],
+  "scope": "CPU artifact validation. Adapter weight bytes are not rehashed here; GPU run.json retains their recorded hashes. Human labels are used as supplied, without automatic relabeling."
+}

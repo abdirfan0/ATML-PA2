@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "num_prompt_ids": 450,
+  "num_policy_responses": 1800,
+  "num_policies": 4,
+  "manual_audit_state": "completed",
+  "checks": [
+    "fixed standard checkpoint configuration",
+    "ordered prompt IDs and full prompt text",
+    "response hashes bound to judge labels",
+    "categorical labels and confidence range",
+    "metrics recomputed with class-specific denominators"
+  ],
+  "scope": "Automated artifact integrity; manual reliability evidence is complete only after student labels the blind sheet."
+}

@@ -346,3 +346,12 @@ python -u -m task3_grpo.benchmark --config configs/grpo.yaml --limit 8
 ```
 
 The course starter supplies model/data loading and objective scaffolding. Task 3 continuation, grouping corrections, validation, orchestration and analysis scripts were developed with ChatGPT assistance. The student is responsible for interpreting results and writing the report.
+
+
+<!-- TASK4_REPRODUCTION -->
+## Task 4: Safety calibration
+
+Inspect saved results with `notebooks/04_Safety.ipynb`.
+Run CPU validation and regenerate figures with `python -m task4_safety.finalize --stage all`.
+
+See [Task 4 reproduction instructions](task4_safety/REPRODUCTION.md) for GPU reproduction and manual-audit procedures.

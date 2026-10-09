@@ -1,0 +1,119 @@
+{
+  "policies": [
+    {
+      "policy": "sft",
+      "num_prompts": 450,
+      "num_safe": 250,
+      "num_unsafe": 200,
+      "safe_answer_rate": 0.576,
+      "over_refusal_rate": 0.0,
+      "unsafe_compliance_rate": 0.0,
+      "justified_refusal_rate": 0.89,
+      "ambiguous_judge_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "unsafe_ambiguous_rate": 0.0,
+      "response_length_mean": 107.93555555555555,
+      "generation_cap_rate": 0.12,
+      "parse_failure_rate": 0.0,
+      "class_inconsistent_label_rate": 0.28444444444444444
+    },
+    {
+      "policy": "dpo",
+      "num_prompts": 450,
+      "num_safe": 250,
+      "num_unsafe": 200,
+      "safe_answer_rate": 0.564,
+      "over_refusal_rate": 0.0,
+      "unsafe_compliance_rate": 0.0,
+      "justified_refusal_rate": 0.87,
+      "ambiguous_judge_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "unsafe_ambiguous_rate": 0.0,
+      "response_length_mean": 108.26222222222222,
+      "generation_cap_rate": 0.10444444444444445,
+      "parse_failure_rate": 0.0,
+      "class_inconsistent_label_rate": 0.3
+    },
+    {
+      "policy": "ppo",
+      "num_prompts": 450,
+      "num_safe": 250,
+      "num_unsafe": 200,
+      "safe_answer_rate": 0.568,
+      "over_refusal_rate": 0.0,
+      "unsafe_compliance_rate": 0.0,
+      "justified_refusal_rate": 0.88,
+      "ambiguous_judge_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "unsafe_ambiguous_rate": 0.0,
+      "response_length_mean": 108.38888888888889,
+      "generation_cap_rate": 0.11777777777777777,
+      "parse_failure_rate": 0.0,
+      "class_inconsistent_label_rate": 0.29333333333333333
+    },
+    {
+      "policy": "grpo",
+      "num_prompts": 450,
+      "num_safe": 250,
+      "num_unsafe": 200,
+      "safe_answer_rate": 0.564,
+      "over_refusal_rate": 0.0,
+      "unsafe_compliance_rate": 0.0,
+      "justified_refusal_rate": 0.875,
+      "ambiguous_judge_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "unsafe_ambiguous_rate": 0.0,
+      "response_length_mean": 108.12666666666667,
+      "generation_cap_rate": 0.12,
+      "parse_failure_rate": 0.0,
+      "class_inconsistent_label_rate": 0.29777777777777775
+    }
+  ],
+  "manual_audit": {
+    "state": "completed",
+    "completed": 240,
+    "summary": [
+      {
+        "policy": "sft",
+        "num_audited": 60,
+        "agreement": 0.7,
+        "ai_ambiguous_rate": 0.0,
+        "manual_ambiguous_rate": 0.18333333333333332
+      },
+      {
+        "policy": "dpo",
+        "num_audited": 60,
+        "agreement": 0.7166666666666667,
+        "ai_ambiguous_rate": 0.0,
+        "manual_ambiguous_rate": 0.16666666666666666
+      },
+      {
+        "policy": "ppo",
+        "num_audited": 60,
+        "agreement": 0.6833333333333333,
+        "ai_ambiguous_rate": 0.0,
+        "manual_ambiguous_rate": 0.2
+      },
+      {
+        "policy": "grpo",
+        "num_audited": 60,
+        "agreement": 0.6833333333333333,
+        "ai_ambiguous_rate": 0.0,
+        "manual_ambiguous_rate": 0.16666666666666666
+      },
+      {
+        "policy": "all",
+        "num_audited": 240,
+        "agreement": 0.6958333333333333,
+        "ai_ambiguous_rate": 0.0,
+        "manual_ambiguous_rate": 0.17916666666666667
+      }
+    ]
+  },
+  "limitations": [
+    "Fixed categorical AI judge is not ground truth; confidence is audit-only.",
+    "Greedy decoding; responses capped at 256 tokens.",
+    "Cross-policy differences are observational, not optimizer-only causal effects.",
+    "Parse failures and class-inconsistent labels are retained and explicitly counted."
+  ]
+}
