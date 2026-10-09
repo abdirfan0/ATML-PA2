@@ -1,0 +1,3 @@
+mechanism,S_reason,reason_tie_rate,reason_wrong_preference_rate,S_outcome,outcome_tie_rate,outcome_wrong_preference_rate,filler_preferred_rate,filler_tie_rate,clean_preferred_over_distractor_rate
+exact_verifier,0.0,1.0,0.0,1.0,0.0,0.0,0.0,1.0,1.0
+ai_pairwise,0.0,1.0,0.0,0.0,1.0,0.0,0.25,0.75,0.25

@@ -1,2 +1,3 @@
 
 results/task4_safety/manual_audit_blind.csv whitespace=-blank-at-eol
+task5_feedback/pipeline.py whitespace=-blank-at-eof

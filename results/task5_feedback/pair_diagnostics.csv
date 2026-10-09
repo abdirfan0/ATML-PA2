@@ -1,0 +1,4 @@
+comparison_set,num_pairs,identical_response_pairs,ai_decisive_on_identical,ai_ties,verifier_ties,unparsed_judge_count
+gsm,900,720,20,868,868,
+transfer,300,266,57,232,286,
+controlled,200,0,0,173,80,

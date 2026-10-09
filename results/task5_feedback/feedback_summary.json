@@ -1,0 +1,505 @@
+{
+  "math_comparison": [
+    {
+      "dataset": "gsm",
+      "policy": "sft",
+      "num_prompts": 300,
+      "exact_accuracy": 0.2733333333333333,
+      "format_compliance": 0.19666666666666666,
+      "response_length_mean": 273.92333333333335,
+      "generation_cap_rate": 0.02,
+      "ai_pairwise_score_vs_sft": 0.5,
+      "ai_group_win_rate": 0.49416666666666664
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlvr",
+      "num_prompts": 300,
+      "exact_accuracy": 0.3,
+      "format_compliance": 0.20333333333333334,
+      "response_length_mean": 274.50666666666666,
+      "generation_cap_rate": 0.02,
+      "ai_pairwise_score_vs_sft": 0.505,
+      "ai_group_win_rate": 0.5
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlaif",
+      "num_prompts": 300,
+      "exact_accuracy": 0.28,
+      "format_compliance": 0.20333333333333334,
+      "response_length_mean": 274.5966666666667,
+      "generation_cap_rate": 0.023333333333333334,
+      "ai_pairwise_score_vs_sft": 0.5066666666666667,
+      "ai_group_win_rate": 0.5058333333333334
+    },
+    {
+      "dataset": "transfer",
+      "policy": "sft",
+      "num_prompts": 100,
+      "exact_accuracy": 0.44,
+      "format_compliance": 0.38,
+      "response_length_mean": 163.81,
+      "generation_cap_rate": 0.0,
+      "ai_pairwise_score_vs_sft": 0.5,
+      "ai_group_win_rate": 0.52
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlvr",
+      "num_prompts": 100,
+      "exact_accuracy": 0.45,
+      "format_compliance": 0.39,
+      "response_length_mean": 163.09,
+      "generation_cap_rate": 0.0,
+      "ai_pairwise_score_vs_sft": 0.48,
+      "ai_group_win_rate": 0.5
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlaif",
+      "num_prompts": 100,
+      "exact_accuracy": 0.42,
+      "format_compliance": 0.37,
+      "response_length_mean": 165.87,
+      "generation_cap_rate": 0.0,
+      "ai_pairwise_score_vs_sft": 0.48,
+      "ai_group_win_rate": 0.48
+    }
+  ],
+  "verifier_judge_agreement": [
+    {
+      "dataset": "gsm",
+      "policy_a": "sft",
+      "policy_b": "rlvr",
+      "num_pairs": 300,
+      "a_preferred_rate": 0.016666666666666666,
+      "tie_rate": 0.9566666666666667,
+      "b_preferred_rate": 0.02666666666666667,
+      "verifier_judge_agreement_all": 0.9366666666666666,
+      "verifier_decisive_pairs": 12,
+      "verifier_judge_agreement_on_verifier_decisive": 0.25,
+      "verifier_tie_rate": 0.96
+    },
+    {
+      "dataset": "gsm",
+      "policy_a": "sft",
+      "policy_b": "rlaif",
+      "num_pairs": 300,
+      "a_preferred_rate": 0.01,
+      "tie_rate": 0.9666666666666667,
+      "b_preferred_rate": 0.023333333333333334,
+      "verifier_judge_agreement_all": 0.9466666666666667,
+      "verifier_decisive_pairs": 8,
+      "verifier_judge_agreement_on_verifier_decisive": 0.125,
+      "verifier_tie_rate": 0.9733333333333334
+    },
+    {
+      "dataset": "gsm",
+      "policy_a": "rlvr",
+      "policy_b": "rlaif",
+      "num_pairs": 300,
+      "a_preferred_rate": 0.01,
+      "tie_rate": 0.97,
+      "b_preferred_rate": 0.02,
+      "verifier_judge_agreement_all": 0.93,
+      "verifier_decisive_pairs": 12,
+      "verifier_judge_agreement_on_verifier_decisive": 0.0,
+      "verifier_tie_rate": 0.96
+    },
+    {
+      "dataset": "transfer",
+      "policy_a": "sft",
+      "policy_b": "rlvr",
+      "num_pairs": 100,
+      "a_preferred_rate": 0.13,
+      "tie_rate": 0.78,
+      "b_preferred_rate": 0.09,
+      "verifier_judge_agreement_all": 0.75,
+      "verifier_decisive_pairs": 5,
+      "verifier_judge_agreement_on_verifier_decisive": 0.0,
+      "verifier_tie_rate": 0.95
+    },
+    {
+      "dataset": "transfer",
+      "policy_a": "sft",
+      "policy_b": "rlaif",
+      "num_pairs": 100,
+      "a_preferred_rate": 0.14,
+      "tie_rate": 0.76,
+      "b_preferred_rate": 0.1,
+      "verifier_judge_agreement_all": 0.75,
+      "verifier_decisive_pairs": 4,
+      "verifier_judge_agreement_on_verifier_decisive": 0.25,
+      "verifier_tie_rate": 0.96
+    },
+    {
+      "dataset": "transfer",
+      "policy_a": "rlvr",
+      "policy_b": "rlaif",
+      "num_pairs": 100,
+      "a_preferred_rate": 0.13,
+      "tie_rate": 0.78,
+      "b_preferred_rate": 0.09,
+      "verifier_judge_agreement_all": 0.75,
+      "verifier_decisive_pairs": 5,
+      "verifier_judge_agreement_on_verifier_decisive": 0.2,
+      "verifier_tie_rate": 0.95
+    }
+  ],
+  "failure_types": [
+    {
+      "dataset": "gsm",
+      "policy": "sft",
+      "failure_type": "missing_designated_final",
+      "count": 196,
+      "rate": 0.6533333333333333
+    },
+    {
+      "dataset": "gsm",
+      "policy": "sft",
+      "failure_type": "correct_terminal_format",
+      "count": 49,
+      "rate": 0.16333333333333333
+    },
+    {
+      "dataset": "gsm",
+      "policy": "sft",
+      "failure_type": "wrong_designated_final",
+      "count": 22,
+      "rate": 0.07333333333333333
+    },
+    {
+      "dataset": "gsm",
+      "policy": "sft",
+      "failure_type": "correct_nonterminal_format",
+      "count": 33,
+      "rate": 0.11
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlvr",
+      "failure_type": "missing_designated_final",
+      "count": 188,
+      "rate": 0.6266666666666667
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlvr",
+      "failure_type": "correct_terminal_format",
+      "count": 53,
+      "rate": 0.17666666666666667
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlvr",
+      "failure_type": "wrong_designated_final",
+      "count": 22,
+      "rate": 0.07333333333333333
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlvr",
+      "failure_type": "correct_nonterminal_format",
+      "count": 37,
+      "rate": 0.12333333333333334
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlaif",
+      "failure_type": "missing_designated_final",
+      "count": 195,
+      "rate": 0.65
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlaif",
+      "failure_type": "correct_terminal_format",
+      "count": 50,
+      "rate": 0.16666666666666666
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlaif",
+      "failure_type": "wrong_designated_final",
+      "count": 21,
+      "rate": 0.07
+    },
+    {
+      "dataset": "gsm",
+      "policy": "rlaif",
+      "failure_type": "correct_nonterminal_format",
+      "count": 34,
+      "rate": 0.11333333333333333
+    },
+    {
+      "dataset": "transfer",
+      "policy": "sft",
+      "failure_type": "missing_designated_final",
+      "count": 43,
+      "rate": 0.43
+    },
+    {
+      "dataset": "transfer",
+      "policy": "sft",
+      "failure_type": "correct_terminal_format",
+      "count": 30,
+      "rate": 0.3
+    },
+    {
+      "dataset": "transfer",
+      "policy": "sft",
+      "failure_type": "wrong_designated_final",
+      "count": 13,
+      "rate": 0.13
+    },
+    {
+      "dataset": "transfer",
+      "policy": "sft",
+      "failure_type": "correct_nonterminal_format",
+      "count": 14,
+      "rate": 0.14
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlvr",
+      "failure_type": "missing_designated_final",
+      "count": 42,
+      "rate": 0.42
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlvr",
+      "failure_type": "correct_terminal_format",
+      "count": 31,
+      "rate": 0.31
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlvr",
+      "failure_type": "wrong_designated_final",
+      "count": 13,
+      "rate": 0.13
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlvr",
+      "failure_type": "correct_nonterminal_format",
+      "count": 14,
+      "rate": 0.14
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlaif",
+      "failure_type": "missing_designated_final",
+      "count": 44,
+      "rate": 0.44
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlaif",
+      "failure_type": "correct_terminal_format",
+      "count": 28,
+      "rate": 0.28
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlaif",
+      "failure_type": "wrong_designated_final",
+      "count": 14,
+      "rate": 0.14
+    },
+    {
+      "dataset": "transfer",
+      "policy": "rlaif",
+      "failure_type": "correct_nonterminal_format",
+      "count": 14,
+      "rate": 0.14
+    }
+  ],
+  "transfer_drops": [
+    {
+      "policy": "sft",
+      "exact_accuracy_gsm_minus_transfer": -0.16666666666666669,
+      "format_compliance_gsm_minus_transfer": -0.18333333333333335,
+      "ai_pairwise_score_vs_sft_gsm_minus_transfer": 0.0,
+      "response_length_mean_gsm_minus_transfer": 110.11333333333334
+    },
+    {
+      "policy": "rlvr",
+      "exact_accuracy_gsm_minus_transfer": -0.15000000000000002,
+      "format_compliance_gsm_minus_transfer": -0.18666666666666668,
+      "ai_pairwise_score_vs_sft_gsm_minus_transfer": 0.025000000000000022,
+      "response_length_mean_gsm_minus_transfer": 111.41666666666666
+    },
+    {
+      "policy": "rlaif",
+      "exact_accuracy_gsm_minus_transfer": -0.13999999999999996,
+      "format_compliance_gsm_minus_transfer": -0.16666666666666666,
+      "ai_pairwise_score_vs_sft_gsm_minus_transfer": 0.026666666666666727,
+      "response_length_mean_gsm_minus_transfer": 108.72666666666669
+    }
+  ],
+  "diagnostic_variants": [
+    {
+      "variant_type": "clean_correct",
+      "num_responses": 20,
+      "exact_reward_mean": 1.0,
+      "ai_group_win_rate_mean": 0.5
+    },
+    {
+      "variant_type": "corrupt_reasoning_correct_final",
+      "num_responses": 20,
+      "exact_reward_mean": 1.0,
+      "ai_group_win_rate_mean": 0.5
+    },
+    {
+      "variant_type": "good_reasoning_wrong_final",
+      "num_responses": 20,
+      "exact_reward_mean": 0.0,
+      "ai_group_win_rate_mean": 0.475
+    },
+    {
+      "variant_type": "persuasive_filler_correct",
+      "num_responses": 20,
+      "exact_reward_mean": 1.0,
+      "ai_group_win_rate_mean": 0.5875
+    },
+    {
+      "variant_type": "gold_distractor_wrong_final",
+      "num_responses": 20,
+      "exact_reward_mean": 0.0,
+      "ai_group_win_rate_mean": 0.4375
+    }
+  ],
+  "controlled_pairs": [
+    {
+      "perturbation": "corrupt_reasoning_correct_final",
+      "mechanism": "exact_verifier",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.0,
+      "tie_rate": 1.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 0.0,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    },
+    {
+      "perturbation": "corrupt_reasoning_correct_final",
+      "mechanism": "ai_pairwise",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.0,
+      "tie_rate": 1.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 0.0,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    },
+    {
+      "perturbation": "good_reasoning_wrong_final",
+      "mechanism": "exact_verifier",
+      "num_pairs": 20,
+      "clean_preferred_rate": 1.0,
+      "tie_rate": 0.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 1.0,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    },
+    {
+      "perturbation": "good_reasoning_wrong_final",
+      "mechanism": "ai_pairwise",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.0,
+      "tie_rate": 1.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 0.0,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    },
+    {
+      "perturbation": "persuasive_filler_correct",
+      "mechanism": "exact_verifier",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.0,
+      "tie_rate": 1.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": null,
+      "wrong_preference_rate": null,
+      "expected_relation": "equivalent mathematical content; report style preference, not a correctness ranking"
+    },
+    {
+      "perturbation": "persuasive_filler_correct",
+      "mechanism": "ai_pairwise",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.0,
+      "tie_rate": 0.75,
+      "perturbed_preferred_rate": 0.25,
+      "better_response_rate": null,
+      "wrong_preference_rate": null,
+      "expected_relation": "equivalent mathematical content; report style preference, not a correctness ranking"
+    },
+    {
+      "perturbation": "gold_distractor_wrong_final",
+      "mechanism": "exact_verifier",
+      "num_pairs": 20,
+      "clean_preferred_rate": 1.0,
+      "tie_rate": 0.0,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 1.0,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    },
+    {
+      "perturbation": "gold_distractor_wrong_final",
+      "mechanism": "ai_pairwise",
+      "num_pairs": 20,
+      "clean_preferred_rate": 0.25,
+      "tie_rate": 0.75,
+      "perturbed_preferred_rate": 0.0,
+      "better_response_rate": 0.25,
+      "wrong_preference_rate": 0.0,
+      "expected_relation": "clean diagnostically better"
+    }
+  ],
+  "reward_sensitivity": [
+    {
+      "mechanism": "exact_verifier",
+      "S_reason": 0.0,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_preference_rate": 0.0,
+      "S_outcome": 1.0,
+      "outcome_tie_rate": 0.0,
+      "outcome_wrong_preference_rate": 0.0,
+      "filler_preferred_rate": 0.0,
+      "filler_tie_rate": 1.0,
+      "clean_preferred_over_distractor_rate": 1.0
+    },
+    {
+      "mechanism": "ai_pairwise",
+      "S_reason": 0.0,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_preference_rate": 0.0,
+      "S_outcome": 0.0,
+      "outcome_tie_rate": 1.0,
+      "outcome_wrong_preference_rate": 0.0,
+      "filler_preferred_rate": 0.25,
+      "filler_tie_rate": 0.75,
+      "clean_preferred_over_distractor_rate": 0.25
+    }
+  ],
+  "protocol": {
+    "generation": "Greedy, unchanged released message lists, common 512-token response cap; no training.",
+    "policy_pairs": "All three unordered policy pairs per prompt; report wins + half ties against SFT.",
+    "diagnostics": "All ten pairs per five-response group; clean reference compared separately with each of four perturbations.",
+    "filler": "Mathematical content unchanged; preference reported as style susceptibility, not proof of correctness.",
+    "agreement": "Three-way verifier/AI ranking agreement; report all pairs and verifier-decisive subset.",
+    "format": "Terminal standalone #### number field; supplied exact verifier may accept a nonterminal field.",
+    "limits": [
+      "Pairwise judge is not ground truth.",
+      "Supplied judge maps unparsed outputs to TIE; cache does not retain raw judge outputs.",
+      "Hash-based orientation chooses one A/B ordering per pair, not a two-order adjudication.",
+      "Cross-dataset drops compare different prompt distributions; no causal optimizer-only attribution."
+    ]
+  }
+}

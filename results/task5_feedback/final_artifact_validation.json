@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "num_policy_responses": 1200,
+  "num_policy_pairs": 1200,
+  "num_diagnostic_responses": 100,
+  "num_diagnostic_pairs": 200,
+  "checks": [
+    "recorded source and dataset hashes",
+    "fixed policy and decoding configuration",
+    "ordered prompts and diagnostic groups",
+    "response hashes and verifier recomputation",
+    "pairwise cache binding",
+    "all seven CSV and JSON tables recomputed"
+  ],
+  "limitations": [
+    "TIE includes unparsed judge outputs; raw judge text was not saved.",
+    "One hash-selected A/B orientation is used per pair.",
+    "CPU validation checks recorded adapter hashes, without requiring adapter weights.",
+    "Different evaluation datasets prevent causal interpretation of transfer differences."
+  ]
+}

@@ -1,0 +1,9 @@
+perturbation,mechanism,num_pairs,clean_preferred_rate,tie_rate,perturbed_preferred_rate,better_response_rate,wrong_preference_rate,expected_relation
+corrupt_reasoning_correct_final,exact_verifier,20,0.0,1.0,0.0,0.0,0.0,clean diagnostically better
+corrupt_reasoning_correct_final,ai_pairwise,20,0.0,1.0,0.0,0.0,0.0,clean diagnostically better
+good_reasoning_wrong_final,exact_verifier,20,1.0,0.0,0.0,1.0,0.0,clean diagnostically better
+good_reasoning_wrong_final,ai_pairwise,20,0.0,1.0,0.0,0.0,0.0,clean diagnostically better
+persuasive_filler_correct,exact_verifier,20,0.0,1.0,0.0,,,"equivalent mathematical content; report style preference, not a correctness ranking"
+persuasive_filler_correct,ai_pairwise,20,0.0,0.75,0.25,,,"equivalent mathematical content; report style preference, not a correctness ranking"
+gold_distractor_wrong_final,exact_verifier,20,1.0,0.0,0.0,1.0,0.0,clean diagnostically better
+gold_distractor_wrong_final,ai_pairwise,20,0.25,0.75,0.0,0.25,0.0,clean diagnostically better

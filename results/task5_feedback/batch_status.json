@@ -1,0 +1,15 @@
+{
+  "state": "completed",
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "-m",
+    "task5_feedback.pipeline",
+    "--config",
+    "configs/feedback.yaml",
+    "--stage",
+    "all",
+    "--batch-size",
+    "16"
+  ]
+}

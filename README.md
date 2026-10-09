@@ -355,3 +355,10 @@ Inspect saved results with `notebooks/04_Safety.ipynb`.
 Run CPU validation and regenerate figures with `python -m task4_safety.finalize --stage all`.
 
 See [Task 4 reproduction instructions](task4_safety/REPRODUCTION.md) for GPU reproduction and manual-audit procedures.
+
+<!-- TASK5_REPRODUCTION -->
+## Task 5: feedback-source evaluation
+
+Inspect saved results with `notebooks/05_Feedback.ipynb`.
+CPU validation and figures: `python -m task5_feedback.finalize --config configs/feedback.yaml`.
+See [reproduction instructions](task5_feedback/REPRODUCTION.md) for fixed-policy GPU inference and metric definitions.

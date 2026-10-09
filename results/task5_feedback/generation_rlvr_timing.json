@@ -1,0 +1,19 @@
+{
+  "model_loading_seconds": 5.497927305000303,
+  "sessions": [
+    {
+      "dataset": "gsm",
+      "start_row": 0,
+      "new_rows": 300,
+      "generation_seconds_this_session": 688.7434768450003
+    },
+    {
+      "dataset": "transfer",
+      "start_row": 0,
+      "new_rows": 100,
+      "generation_seconds_this_session": 169.72586034799951
+    }
+  ],
+  "peak_vram_gib": 3.3086905479431152,
+  "model_commit_hash": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+}

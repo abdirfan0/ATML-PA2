@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "num_policy_responses": 1200,
+  "num_policy_pairs": 1200,
+  "num_diagnostic_responses": 100,
+  "num_diagnostic_pairs": 200,
+  "checks": [
+    "fixed verifier and judge source hashes",
+    "unchanged dataset hashes and ordered indices",
+    "identical prompts across the three fixed policies",
+    "exact reward and terminal format recomputation",
+    "pair results bound to response hashes",
+    "all comparison/diagnostic tables recomputed"
+  ]
+}
