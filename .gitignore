@@ -32,3 +32,17 @@ results/task2_ppo/*_state.pt
 results/task2_ppo/*_state.tmp
 results/task3_grpo/*_state.pt
 results/task3_grpo/*.tmp
+
+# Local working artifacts
+/02_PPO.ipynb
+/manual_audit_blind.csv.xlsx
+/results/task1_dpo/smoke32_*.json
+/results/task1_dpo/smoke32_*.jsonl
+/results/task2_ppo/smoke1_*.json
+/results/task2_ppo/smoke1_*.jsonl
+/results/task3_grpo/smoke1_*.json
+/results/task3_grpo/smoke1_*.jsonl
+/results/task4_safety/manual_audit_before_import.csv
+/results/task4_safety_smoke/
+/results/task5_feedback_benchmark/
+/results/task5_feedback_smoke/

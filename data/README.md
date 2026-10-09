@@ -1,27 +1,20 @@
 # Course data
 
-Most fixed course data are installed by:
+Install fixed datasets, caches, checkpoints, and manifests with:
 
 ```bash
 python -m scripts.download_assets
+python -m scripts.validate_assets
 ```
 
-The repository itself tracks only the two tiny fixed prompt/evaluation files that are not part of the large v3 post-training archive:
+The downloader uses the pinned Hugging Face course-asset revision specified in
+`configs/assets.yaml` and `scripts/download_assets.py`.
 
-- `word_limit_prompts.jsonl` — 10 common prompts used in Task 1's explicit word-limit compliance analysis.
-- `math_transfer_eval.jsonl` — fixed 100-example SVAMP transfer subset used in Task 5. The asset installer creates this deterministically from the first 100 examples in the official SVAMP challenge-set order if the file is absent.
+Only `word_limit_prompts.jsonl` (10 Task 1 prompts) is tracked directly in this
+repository. `math_transfer_eval.jsonl` (the 100-example Task 5 SVAMP subset) is
+downloaded unchanged with the other course assets and is ignored by Git.
+Fixed source indices and dataset hashes are retained in run metadata.
 
-The large release archive supplies:
-
-- `dpo_standard_train.jsonl`
-- `dpo_standard_eval.jsonl`
-- `dpo_length_balanced_train.jsonl`
-- `dpo_length_stratified_eval.jsonl`
-- `rl_prompt_pool_train.jsonl`
-- `rl_prompt_pool_eval.jsonl`
-- `xstest_safety_prompts.csv`
-- `gsm8k_rl_train.jsonl`
-- `gsm8k_eval.jsonl`
-- `task5_controlled_reward_diagnostics.jsonl`
-
-Do not edit course-provided data. Save student-generated results under `results/` or `outputs/` instead.
+Do not edit course data or use safety/math evaluation results to tune earlier
+training. Save generated evidence under `results/` and adapters under the ignored
+`outputs/` directory.

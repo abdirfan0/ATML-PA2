@@ -1,144 +1,65 @@
-# ATML PA2 - LLM Post-Training
+# ATML PA2: LLM Post-Training
 
-<!-- FINAL_STUDENT_SETUP -->
+Student implementation and saved evidence for Tasks 1–5. Python modules implement
+the experiments; clean notebooks inspect saved results on CPU and provide optional
+GPU reproduction. GPU execution is disabled by default in every clean notebook.
 
-## Quick start
+## Setup
 
 ```bash
-git clone https://github.com/AbDu11aHHH/ATML-PA2-LLM-PostTraining.git
-cd ATML-PA2-LLM-PostTraining
+git clone https://github.com/abdirfan0/ATML-PA2.git
+cd ATML-PA2
 python -m pip install -r requirements.txt
 python -m scripts.download_assets
 python -m scripts.validate_assets
-```
-
-The fixed datasets, cached diagnostics, and supplied
-continuation checkpoints are downloaded from:
-
-https://huggingface.co/datasets/AbDu11aHHH/ATML-PA2-assets
-
-Pinned release revision:
-
-`0b350481fb03f5525a35bcdec4131bd4fe487f98`
-
----
-# ATML PA2 - LLM Post-Training
-
-This is the **student starter repository** for ATML PA2. The released code is intentionally incomplete: Tasks 1-3 provide model/data loading, objective helpers, checkpoint restoration, and experiment entry points, but **you must implement the training loops and ablation orchestration yourself**. Each of Tasks 1-3 also contains one deliberate algorithmic defect in its core objective code; identifying and correcting these defects is part of validating your implementation.
-
-Task 4 supplies the fixed AI safety judge and response-generation utilities, but you must write the evaluation/aggregation code. Task 5 supplies the exact RLVR verifier, the fixed pairwise AI judge used for RLAIF evaluation, and data/model loaders; you must implement the requested evaluation and analysis.
-
-## 1. Clone and install
-
-```bash
-git clone https://github.com/COURSE_ORG/ATML-PA2-LLM-PostTraining.git
-cd ATML-PA2-LLM-PostTraining
-python -m pip install -r requirements.txt
-```
-
-## 2. Download the course assets
-
-The large course-created checkpoints and fixed data are distributed as a GitHub Release asset rather than normal Git files. After cloning, run:
-
-```bash
-python -m scripts.download_assets
-python -m scripts.validate_assets
-```
-
-If your instructor provides a direct asset URL separately, use:
-
-```bash
-python -m scripts.download_assets --url '<ASSET_URL>'
-```
-
-Public base/reward/judge models are downloaded from Hugging Face at runtime and are **not** included in the course asset archive.
-
-The installer also materializes the fixed 100-example Task 5 transfer set from the official SVAMP challenge-set source if it is not already present. The tiny Task 1 word-limit prompt set is tracked directly in this repository.
-
-## 3. Environment check
-
-```bash
 python -m scripts.check_environment
 ```
 
-Run commands from the repository root. The reference environment used to prepare the release pins Transformers 4.57.1, TRL 0.27.2, PEFT 0.17.1, and Tokenizers 0.22.1.
+Run commands from the repository root. Assets are downloaded from the Hugging
+Face dataset `AbDu11aHHH/ATML-PA2-assets`, pinned to revision
+`0b350481fb03f5525a35bcdec4131bd4fe487f98`. The downloader does not use GitHub
+Release archives or accept `--url`. Raw datasets, caches, and weights are ignored
+by Git. Public base/reward/judge models are loaded at GPU inference time.
 
-## 4. Supplied course checkpoints
-
-After `download_assets`, these directories should exist:
-
-```text
-checkpoints/ppo_midpoint_policy/
-checkpoints/ppo_midpoint_value/
-checkpoints/grpo_midpoint_policy/
-checkpoints/rlvr_policy/
-checkpoints/rlaif_policy/
-```
-
-PPO and GRPO begin from the supplied continuation checkpoints. RLVR and RLAIF are supplied frozen evaluation policies; students do not retrain them.
-
-The PPO value checkpoint is intentionally released as the exact staff midpoint state, including its imperfect held-out value calibration. Treat critic behavior as an analysis variable rather than assuming a perfect baseline, and start every PPO fork from the identical supplied policy/value state. The default continuation generation cap is 512 tokens for feasibility; frozen evaluation uses the larger cap specified in `configs/ppo.yaml`.
-
-## 5. Task entry points
-
-### Task 1 - DPO
+Core requirements pin Transformers 4.57.1, Tokenizers 0.22.1, TRL 0.27.2, and
+PEFT 0.17.1. Torch and several other dependencies have version ranges, so this
+is not a complete environment lock. Recorded versions/hardware are in run
+metadata; exact responses across versions or hardware are not guaranteed.
+If an incompatible optional `torchao` package blocks PEFT in Colab, uninstall
+it before installing the requirements:
 
 ```bash
-python -m task1_dpo.train --config configs/dpo.yaml --run-name standard
-python -m task1_dpo.evaluate --config configs/dpo.yaml --adapter outputs/task1_dpo/standard --name standard
-python -m task1_dpo.ablate_beta --config configs/dpo.yaml
-python -m task1_dpo.analyze_length --config configs/dpo.yaml
+python -m pip uninstall -y torchao
+python -m pip install -r requirements.txt
 ```
 
-### Task 2 - PPO
+Use Colab or an existing Jupyter/IPython environment for notebooks. Their path
+cells detect the checkout or mount the original Drive location; adapt the Drive
+fallback if necessary. Install requirements and download assets before CPU
+diagnostics that read course data or caches. Saved-text inspection needs no GPU.
+
+## Independent GPU reproduction
+
+Use an A100 for the GPU pipelines. A fresh clone contains published result logs
+but no trained student adapters or optimizer states. Preserve published Task
+1–3 logs before independent training: otherwise completed-run reuse or metadata
+rejection can prevent a fresh run. On a fresh clone, run this once:
 
 ```bash
-python -m task2_ppo.continue_train --config configs/ppo.yaml --run-name standard
-python -m task2_ppo.evaluate --config configs/ppo.yaml --adapter outputs/task2_ppo/standard --name standard
-python -m task2_ppo.analyze_clipping --config configs/ppo.yaml
-python -m task2_ppo.ablate_kl --config configs/ppo.yaml
+mkdir ../ATML-PA2-published-evidence
+mv results/task1_dpo results/task2_ppo results/task3_grpo ../ATML-PA2-published-evidence/
 ```
 
-### Task 3 - GRPO
+Keep that backup. In a previously used checkout, also preserve the existing
+`outputs/task1_dpo`, `outputs/task2_ppo`, and `outputs/task3_grpo` directories.
+Matching incomplete runs can resume when their states are available. Task 4–5
+commands below use separate reproduction directories. Do not use their evaluation
+labels to tune earlier policy training.
 
-```bash
-python -m task3_grpo.continue_train --config configs/grpo.yaml --run-name standard
-python -m task3_grpo.evaluate --config configs/grpo.yaml --adapter outputs/task3_grpo/standard --name standard
-python -m task3_grpo.analyze_group_size --config configs/grpo.yaml
-python -m task3_grpo.compare_normalization --config configs/grpo.yaml
-```
-
-### Task 4 - Safety calibration
-
-The judge loader/parser are supplied. You must implement the requested generation aggregation and evaluation.
-
-```bash
-python -m task4_safety.generate_responses --config configs/feedback.yaml
-python -m task4_safety.judge_responses --config configs/feedback.yaml
-python -m task4_safety.make_audit_sheet --config configs/feedback.yaml
-python -m task4_safety.evaluate_safety --config configs/feedback.yaml
-```
-
-### Task 5 - RLVR vs RLAIF
-
-The exact verifier and pairwise AI judge are supplied; you implement the evaluation/analysis.
-
-```bash
-python -m task5_feedback.evaluate_math --config configs/feedback.yaml --dataset gsm
-python -m task5_feedback.score_perturbations --config configs/feedback.yaml
-python -m task5_feedback.evaluate_math --config configs/feedback.yaml --dataset transfer
-python -m task5_feedback.compare_feedback --config configs/feedback.yaml
-```
-
-## 6. Reproducibility rules
-
-- Do not alter course-provided data, cached rollouts, or supplied checkpoints.
-- Start every short fork from the **same supplied midpoint checkpoint**.
-- Keep prompt IDs, generated-token/update budgets, seed, and evaluation procedure matched across ablations.
-- Commit your code, configs, small JSON/CSV logs, and figures. Do not commit downloaded checkpoints, raw course assets, or model caches.
-- Record peak VRAM and wall-clock time for the standard PPO and GRPO continuations.
-
-See the assignment manual for the required experiments, metrics, and report questions.
+Fixed prompt IDs, selected indices, budgets, decoding settings, source/data
+hashes and applicable hardware details are in run metadata. Tables and logs are
+under `results/`; PNG/PDF figure pairs are under `report/figures/`. All five clean
+notebooks are under `notebooks/` and inspect that evidence.
 
 ## Task 1: DPO experiments
 
@@ -177,8 +98,6 @@ rejects existing run logs. Existing trained outputs must also be moved
 aside if reproducing in a previously used checkout.
 
 ```bash
-mv results/task1_dpo results/task1_dpo_published
-
 python -m task1_dpo.train --config configs/dpo.yaml --run-name standard --output outputs/task1_dpo/standard
 python -m task1_dpo.evaluate --config configs/dpo.yaml --adapter outputs/task1_dpo/standard --name standard
 
@@ -239,7 +158,7 @@ GPU execution flags are disabled by default. The qualitative cell saves
 
 First install `requirements.txt`, download the pinned course assets with
 `python -m scripts.download_assets`, and run `python -m scripts.validate_assets`.
-Use a fresh checkout. On an existing checkout, preserve both the previous
+Preserve published results even in a fresh clone, as described above. Also preserve the previous
 `results/task2_ppo/` and `outputs/task2_ppo/` directories before starting
 a fresh reproduction. Matching incomplete runs resume automatically;
 runs with mismatched metadata are rejected.
@@ -339,7 +258,7 @@ The source-hash, prompt-ID, token-budget and row-level metric checks write JSON 
 
 Raw sampled policy/reference log-probability differences under temperature/top-p decoding are diagnostics, not unbiased full-policy KL estimates. Gradient-allocation statistics concern selected-token log probabilities, excluding the KL term; they are not model-parameter gradient norms. Masked batches perform no optimization step. The standard run retains 20 rollout updates, including two batches with no active-loss tokens. Saved state files contain optimizer and adapter state for resumption; do not commit `results/task3_grpo/*_state.pt` or temporary files.
 
-Matching completed runs are reused and partial runs resume. Changed metadata or training source hashes are rejected. For an independent reproduction, use a fresh checkout or preserve prior results and output directories first. All final evaluations use ordered fixed prompt IDs, batch size 4, the same decoding settings and the same batch-seed rule. The batch-size throughput benchmark is optional:
+Matching completed runs are reused and partial runs resume. Changed metadata or training source hashes are rejected. For an independent reproduction, preserve prior results even in a fresh clone, and preserve existing output directories first. All final evaluations use ordered fixed prompt IDs, batch size 4, the same decoding settings and the same batch-seed rule. The batch-size throughput benchmark is optional:
 
 ```bash
 python -u -m task3_grpo.benchmark --config configs/grpo.yaml --limit 8
@@ -347,18 +266,75 @@ python -u -m task3_grpo.benchmark --config configs/grpo.yaml --limit 8
 
 The course starter supplies model/data loading and objective scaffolding. Task 3 continuation, grouping corrections, validation, orchestration and analysis scripts were developed with ChatGPT assistance. The student is responsible for interpreting results and writing the report.
 
-
-<!-- TASK4_REPRODUCTION -->
 ## Task 4: Safety calibration
 
-Inspect saved results with `notebooks/04_Safety.ipynb`.
-Run CPU validation and regenerate figures with `python -m task4_safety.finalize --stage all`.
+Inspect saved results with `notebooks/04_Safety.ipynb`, or run:
 
-See [Task 4 reproduction instructions](task4_safety/REPRODUCTION.md) for GPU reproduction and manual-audit procedures.
+```bash
+python -m task4_safety.finalize --config configs/feedback.yaml
+```
 
-<!-- TASK5_REPRODUCTION -->
-## Task 5: feedback-source evaluation
+For fresh GPU generation, first reproduce the standard Task 1–3 adapters above.
+The pipeline uses all 450 XSTest prompts, fixed categorical judging, greedy
+decoding, batch size 4, and a 256-token response cap:
 
-Inspect saved results with `notebooks/05_Feedback.ipynb`.
-CPU validation and figures: `python -m task5_feedback.finalize --config configs/feedback.yaml`.
-See [reproduction instructions](task5_feedback/REPRODUCTION.md) for fixed-policy GPU inference and metric definitions.
+```bash
+python -m task4_safety.validate_pipeline
+python -u -m task4_safety.pipeline --config configs/feedback.yaml --stage all --batch-size 4 --output results/task4_safety_reproduction
+```
+
+Label all 240 items in `results/task4_safety_reproduction/manual_audit_blind.csv`
+before viewing AI labels or the audit key. Keep IDs and full text unchanged.
+The fixed audit covers 30 SAFE and 30 UNSAFE prompt IDs across four policies.
+After labeling, recompute summaries and figures on CPU:
+
+```bash
+python -c 'from pathlib import Path; from common.data import load_yaml; from task4_safety.pipeline import dataset,summarize; summarize(Path("results/task4_safety_reproduction"),dataset(load_yaml("configs/feedback.yaml")))'
+python -m task4_safety.finalize --config configs/feedback.yaml --output results/task4_safety_reproduction --figures report/reproduction_figures
+```
+
+Class-inconsistent AI labels remain visible. Full-set and audit-subset metrics
+use separate class-specific denominators. Manual disagreements are retained;
+qualitative safety candidates require student review. See
+[Task 4 details](task4_safety/REPRODUCTION.md).
+
+## Task 5: Feedback-source evaluation
+
+Inspect saved results with `notebooks/05_Feedback.ipynb`, or run:
+
+```bash
+python -m task5_feedback.finalize --config configs/feedback.yaml
+```
+
+Fresh GPU reproduction evaluates untouched SFT and two supplied frozen adapters
+on 300 GSM8K and 100 SVAMP prompts; no training is performed. Generation is
+greedy with batch size 16 and a 512-token response cap. All 100 controlled
+diagnostic responses and 200 diagnostic pairs are scored.
+
+```bash
+python -m task5_feedback.validate_pipeline
+python -u -m task5_feedback.pipeline --config configs/feedback.yaml --stage all --batch-size 16 --output results/task5_feedback_reproduction
+python -m task5_feedback.finalize --config configs/feedback.yaml --output results/task5_feedback_reproduction --figures report/reproduction_figures
+```
+
+The unchanged verifier uses the last designated `####` number. Terminal format
+is measured separately. The fixed pairwise judge uses one hash-selected A/B
+orientation, maps unparsed outputs to TIE, and does not retain raw judge text.
+Decisive judgments on identical responses are counted in `pair_diagnostics.csv`.
+Overall verifier–judge agreement includes shared ties; decisive-subset agreement
+includes its denominator. Transfer differences compare different prompt
+distributions. See [Task 5 details](task5_feedback/REPRODUCTION.md).
+
+The legacy Task 4/5 starter helper modules are retained for supplied loaders and
+scorers. Use the implemented `pipeline` and `finalize` commands above rather
+than the starter TODO entry points.
+
+## Task 6 and submission
+
+Task 6 synthesizes the existing evidence; no additional training is required.
+The student writes the report and its interpretation under the manual's AI-use
+policy. Every reported value should trace to a saved file and command. Freeze
+the submitted code state with a meaningful commit and provide an accessible
+repository link. Materially reused course code and ChatGPT/Codex coding
+assistance are attributed above; the PDF report language and analysis must be
+the student's own.

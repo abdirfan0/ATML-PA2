@@ -51,7 +51,7 @@ The source-hash, prompt-ID, token-budget and row-level metric checks write JSON 
 
 Raw sampled policy/reference log-probability differences under temperature/top-p decoding are diagnostics, not unbiased full-policy KL estimates. Gradient-allocation statistics concern selected-token log probabilities, excluding the KL term; they are not model-parameter gradient norms. Masked batches perform no optimization step. The standard run retains 20 rollout updates, including two batches with no active-loss tokens. Saved state files contain optimizer and adapter state for resumption; do not commit `results/task3_grpo/*_state.pt` or temporary files.
 
-Matching completed runs are reused and partial runs resume. Changed metadata or training source hashes are rejected. For an independent reproduction, use a fresh checkout or preserve prior results and output directories first. All final evaluations use ordered fixed prompt IDs, batch size 4, the same decoding settings and the same batch-seed rule. The batch-size throughput benchmark is optional:
+Matching completed runs are reused and partial runs resume. Changed metadata or training source hashes are rejected. For an independent reproduction, preserve prior results even in a fresh clone, and preserve existing output directories first. See the top-level README for the backup commands. All final evaluations use ordered fixed prompt IDs, batch size 4, the same decoding settings and the same batch-seed rule. The batch-size throughput benchmark is optional:
 
 ```bash
 python -u -m task3_grpo.benchmark --config configs/grpo.yaml --limit 8
